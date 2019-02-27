@@ -21,7 +21,7 @@ namespace Æggeautomaten.tests
         {
             for (int i = 0; i <= Bank.Accounts.Count; i++)
             {
-                if (Bank.Accounts[i].AccountNumber == accountNumber)
+                if (accounts[i].AccountNumber == accountNumber)
                 {
                     Assert.Equal(Bank.Accounts[i].AccountNumber, accountNumber);
                     break;
