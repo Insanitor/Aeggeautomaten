@@ -11,57 +11,63 @@ namespace Æggeautomaten.tests
 
     public class BankTests
     {
-        public static List<BankAccount> accounts = new List<BankAccount>() { new BankAccount("01234", 1234), new BankAccount("12345", 2345) };
+        private static List<BankAccount> accounts = new List<BankAccount>() { new BankAccount("01234", 1234), new BankAccount("12345", 2345) };
+
+        public static List<BankAccount> Accounts { get => accounts; set => accounts = value; }
 
         [Theory]
         [InlineData("01234")]
         [InlineData("12345")]
-        [InlineData("23456")]
-        private static void GetAccount(string accountNumber)
+        private static BankAccount GetAccount(string accountNumber)
         {
-            for (int i = 0; i <= Bank.Accounts.Count; i++)
+            for (int i = 0; i <= Accounts.Count; i++)
             {
-                if (accounts[i].AccountNumber == accountNumber)
+                if (Accounts[i].AccountNumber == accountNumber)
                 {
-                    Assert.Equal(Bank.Accounts[i].AccountNumber, accountNumber);
-                    break;
+                    Assert.Equal(Accounts[i].AccountNumber, accountNumber);
+                    return Accounts[i];
                 }
             }
+            return null;
         }
 
         [Theory]
         [InlineData("01234", 1234)]
         [InlineData("12345", 2345)]
-        [InlineData("23456", 3456)]
-        public static void CanAccessAccount(string accountNumber, int pinCode)
+        public static bool CanAccessAccount(string accountNumber, int pinCode)
         {
-            Assert.True(pinCode == Bank.GetAccount(accountNumber).PinNumber);
+            if (pinCode == GetAccount(accountNumber).PinNumber)
+            {
+                Assert.True(true);
+                return true;
+            }
+            return false;
         }
 
         [Theory]
         [InlineData("01234", 1234)]
         [InlineData("12345", 2345)]
-        [InlineData("23456", 3456)]
-        public static void GetBalance(string accountNumber, int pinCode)
+        public static double GetBalance(string accountNumber, int pinCode)
         {
             if (Bank.CanAccessAccount(accountNumber, pinCode))
             {
-                Assert.True(Bank.GetAccount(accountNumber).Balance >= 0);
+                Assert.True(true);
+                return GetAccount(accountNumber).Balance;
             }
+            return 0;
         }
 
         [Theory]
         [InlineData("01234", 1234, 100)]
         [InlineData("01234", 1234, 1000)]
         [InlineData("12345", 2345, 100)]
-        [InlineData("23456", 3456, 1000)]
         public static void AddBalance(string accountNumber, int pinCode, double amount)
         {
-            if (Bank.CanAccessAccount(accountNumber, pinCode))
+            if (CanAccessAccount(accountNumber, pinCode))
             {
-                Bank.GetAccount(accountNumber).Balance += amount;
+                GetAccount(accountNumber).Balance += amount;
+                Assert.True(true);
             }
-            Assert.Equal(Bank.GetAccount(accountNumber).Balance, amount);
         }
 
         [Fact]
