@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Æggeautomaten.Model
 {
-    public class CardNumberGenerator
+    public class NumberGenerator
     {
         public static string GenerateMaestroCardNumber(int digitCount)
         {
@@ -22,6 +22,18 @@ namespace Æggeautomaten.Model
             }
 
             return cardNumber;
+        }
+
+        public static void GenerateAccountNumber()
+        {
+            string accountNumber = "";
+            while (accountNumber.Length < 10)
+            {
+                while (accountNumber.Length < 10)
+                {
+                    accountNumber += new Random().Next(0, 9);
+                }
+            }
         }
     }
 }

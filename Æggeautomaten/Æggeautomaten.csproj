@@ -60,7 +60,7 @@
   <ItemGroup>
     <Compile Include="Model\Banks\Bank.cs" />
     <Compile Include="Model\Banks\BankAccount.cs" />
-    <Compile Include="Model\CardNumberGenerator.cs" />
+    <Compile Include="Model\NumberGenerator.cs" />
     <Compile Include="Model\CreditCards\CreditCard.cs" />
     <Compile Include="Model\CreditCards\Expireable.cs" />
     <Compile Include="Model\CreditCards\Interfaces\IMonthlyLimit.cs" />
