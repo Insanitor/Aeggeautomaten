@@ -83,14 +83,5 @@ namespace Æggeautomaten.tests
             }
             Assert.True(accountNumber.Length == 10);
         }
-
-        //public static void NewBankAccount(string cardHolder)
-        //{
-        //    for (int i = 0; i < accounts.Count; i++)
-        //    {
-        //        accounts.Add(new BankAccount(cardHolder))
-        //        Assert.True(accounts[i].AccountOwner == cardHolder);
-        //    }
-        //}
     }
 }
