@@ -37,7 +37,7 @@ namespace Æggeautomaten.Model.Banks
 
         public static double GetBalance(string accountNumber, int pinCode)
         {
-            if (Bank.CanAccessAccount(accountNumber, pinCode))
+            if (CanAccessAccount(accountNumber, pinCode))
             {
                 return GetAccount(accountNumber).Balance;
             }
